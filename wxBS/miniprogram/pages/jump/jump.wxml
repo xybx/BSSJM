@@ -1,0 +1,13 @@
+<!--pages/jump/jump.wxml-->
+<scroll-view class="scrollbox" style="height:{{winHeight}}px" enable-flex scroll-y type="list">
+    <view class="iconbox">
+      <image src="../../image/submit.png" mode="scaleToFill"/>
+    </view>
+    <view class="fontbox">
+      <text>提交成功，</text>
+      <text>感谢您的留言，我们将尽快办理。</text>
+    </view>
+    <view class="btnbox" bindtap="backClick">
+      返回 {{timers}}s
+    </view>
+</scroll-view>

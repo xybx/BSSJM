@@ -1,0 +1,35 @@
+<!--pages/matterdirect.wxml-->
+<navigation-bar title="{{mTitle}}" back="{{true}}" backTo="{{lastPage}}" color="white" redirect="{{redirectback}}" background="#2381EC"></navigation-bar>
+<scroll-view class="scrollbox" style="height:{{winHeight - 54 - padtop}}px" enable-flex scroll-y type="list" bindscrolltolower="bindscrolltolower">
+  <view class="matterbox">
+    <block wx:for="{{pushOverList}}" wx:key="id" wx:for-item="item" wx:for-index="index" class="mcontent-item">
+        <view class="itemlist" bindtap="bindoverClick" data-id="{{item.pid}}">
+            <view class="mcontent-item-title">
+                <text class="label-block">归属辖区：</text><text>{{item.selareaname ? item.selareaname : '暂无归属辖区'}}</text>
+            </view>
+            <view class="mcontent-item-title">
+                <text class="label-block">事项类别：</text><text>{{item.typename}}</text>
+            </view>
+            <view class="mcontent-item-title">
+                <text class="label-block">处理状态：</text><text>{{item.statusname}}</text>
+            </view>
+            <view class="mcontent-item-time">
+                <text>{{item.startdate}}</text>
+                <view class="mcontent-item-button">
+                    <text class="mcontent-item-info">查看详情</text>
+                    <icon class="iconfont icon-jinrujiantouxiao"/>
+                </view>
+            </view>
+
+        </view>
+    </block>
+    <!--    如果获取到的historyList为空则展示数据为空的图片-->
+    <view wx:if="{{pushOverList.length==0}}" class="nodata">
+        <image src="../../image/nodata.png"/>
+        <text>暂无数据</text>
+    </view>
+  </view>
+</scroll-view>
+
+
+

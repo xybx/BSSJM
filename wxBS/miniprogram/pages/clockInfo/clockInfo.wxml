@@ -1,0 +1,51 @@
+<!--pages/clockInfo/clockInfo.wxml-->
+<navigation-bar title="{{mTitle}}" back="{{true}}" backTo="{{lastPage}}" color="white"
+                background="#2381EC"></navigation-bar>
+<scroll-view class="scrollbox" style="height:{{winHeight - 44 - padtop}}px" enable-flex scroll-y type="list">
+    <view class='swipercont'>
+        <form bindsubmit="saveData">
+        <view class="formitem">
+            <label class="formlabel">打卡类别</label>
+            <view> {{inputData.typename}}</view>
+        </view>
+        <view class="formitem">
+            <label class="formlabel">单位</label>
+            <view class="inputstyle">{{inputData.officename}}</view>
+        </view>
+        <view class="formitem">
+            <label class="formlabel">姓名</label>
+            <view class="inputstyle">{{inputData.name}}</view>
+        </view>
+        <view class="formitem">
+            <label class="formlabel">手机号</label>
+            <view class="inputstyle">{{inputData.phonenum}}</view>
+        </view>
+        <view class="formitem">
+            <label class="formlabel">时间</label>
+            <view class="inputstyle" >{{inputData.signtime}}</view>
+        </view>
+        <view class="formitem textbox">
+            <label class="formlabel">打卡内容描述</label>
+            <textarea class="textstyle" name="content" disabled="disabled" value="{{inputData.content}}"/>
+        </view>
+        <view class="formitem textbox">
+            <label class="formlabel">上传图片</label>
+            <view class="imgboxShow">
+                <view class='pic imglist' wx:for="{{inputData.imageList}}" wx:for-item="item" wx:key="*this">
+                    <!--                    循环imageList展示图片,点击图片全屏查看-->
+                    <image class='photoimg' src="{{imgurl}}{{item}}{{globletoken}}" data-index="{{index}}"
+                           mode="scaleToFill" bindtap="previewImg">
+                    </image>
+                </view>
+            </view>
+        </view>
+        <view class="formitem textbox">
+            <view class="areabox">
+                <label class="formlabel">定位信息</label>
+                <input type="text" name="signaddress" value="{{inputData.signaddress}}" class="inputstyle" disabled  placeholder="当前位置" />
+            </view>
+            <map id="mapId" class="map" markers="{{tMarkers}}" latitude="{{inputData.latitude}}" longitude="{{inputData.longitude}}" show-location="true" scale="12"></map>
+        </view>
+        </form>
+    </view>
+</scroll-view>

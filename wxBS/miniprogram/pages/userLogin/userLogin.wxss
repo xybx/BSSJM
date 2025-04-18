@@ -1,0 +1,99 @@
+/* pages/userLogin/userLogin.wxss */
+.formbox{
+  height: 100%;
+  padding: 0 12%;
+  z-index:2;
+  display: flex;
+  flex-direction: column;
+  flex:1;
+}
+.titbox{
+  width:100%;
+  margin-top:300rpx;
+  color: #333;
+  font-size:28px;
+  margin-bottom: 20px;
+}
+
+.bottombg{
+  width: 100%;
+  height: 300rpx;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+.bottombg image{
+  width: 100%;
+  height: 100%;
+}
+.formitem{
+  background-color:#f1f1f1;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 60rpx;
+}
+.iconfont{
+  font-size:22px;
+}
+.icon-shoujihao{
+  font-size: 24px;
+}
+.formitem input{
+  width: calc(100% - 32px);
+  margin-left: 10px;
+}
+.formitem:nth-child(3) input{
+  width: calc(100% - 34px);
+  margin-left: 12px;
+}
+.formitem:first-child input{
+  width: calc(100% - 34px);
+}
+.inputstyle{
+  height:100%;
+  line-height: 30px;
+  text-align: left;
+}
+.pinput{
+  width:30%;
+  margin-right: 1%;
+}
+.picker{
+  width:calc(100% - 32px);
+  height:100%;
+  line-height: 30px;
+  text-align: right;
+  margin-left: 12px;
+}
+.placeholder{
+  text-align: left;
+  color: #888;
+}
+
+.pbtn{
+  width:300rpx;
+  padding: 0 10px!important;
+  border-radius: 10rpx;
+  background-color:rgba(57, 149, 204, 1);
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+}
+.goodbtn{
+  background-color: rgba(57, 149, 204, 1);
+  color: #fff;
+  font-size: 16px;
+  border-radius: 25px;
+}
+.backbtn{
+  background-color: #eaeaea;
+  color: #333;
+  font-size: 16px;
+  border-radius: 25px;
+  margin-top: 20px;
+  padding: 10px 14px;
+  text-align: center;
+}

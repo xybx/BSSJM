@@ -1,0 +1,115 @@
+/* pages/report/history/reportHistory.wxss */
+@import '../../fonts/iconfont.wxss';
+.matterbox{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+}
+.mcontent-item-time{
+    font-size: 28rpx;
+    font-weight: 400;
+    font-family: 'PingFang SC';
+    color:rgba(102, 102, 102, 1);
+    padding-top: 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.mcontent-item-time-btn{
+    margin-left: 20rpx;
+}
+
+.mcontent-item-title{
+    font-size: 32rpx;
+    font-weight: 500;
+    font-family: 'PingFang SC';
+    color:rgba(51, 51, 51, 1);
+    padding-top: 20rpx;
+    display: flex;
+}
+.itemlist{
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding:15rpx 30rpx;
+    background-color: #ffffff;
+    margin: 1.5vmax 2vmax 0.5vmax 2vmax;
+    position: relative;
+    border-radius: 1.5vmax;
+
+}
+.itemlist:last-child{
+    border-bottom: none;
+}
+.mcontent-item-title text{
+    font-size: 32rpx;
+}
+
+.mcontent-item-time > text{
+    font-size: 30rpx;
+}
+.iconfont{
+    font-size:32rpx !important;
+    color:rgba(102, 102, 102, 1) !important;
+    position: absolute;
+    right: 30rpx;
+    top: calc(50% - 15px);
+    /* right: -37vmax;
+    top: -5vmax;
+    width: 3vmax;
+    height: 3vmax; */
+}
+.nodata{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*    上下居中*/
+    justify-content: center;
+
+
+}
+.nodata image{
+    width: 28vmax;
+    height: 24vmax;
+}
+.nodata text{
+    font-size: 32rpx;
+    font-weight: 500;
+    font-family: 'PingFang SC';
+    color:rgba(102, 102, 102, 1);
+
+}
+
+
+.mcontent{
+    height: 100%;
+}
+
+.mcontent-item-btn{
+    display: flex;
+    flex-direction: row;
+    float: right;
+}
+
+.mcontent-item-btn .btn-delete{
+    margin-left: 20rpx;
+    border: 1px solid red;
+    color: red;
+    background-color: #F7F7F7;
+}
+
+.mcontent-item-btn .btn-detail{
+    margin-left: 20rpx;
+    border: 1px solid green;
+    color: green;
+    background-color: #F7F7F7;
+}
+
+.label-block{
+    width:7vmax;
+}

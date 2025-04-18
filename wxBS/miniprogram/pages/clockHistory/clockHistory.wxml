@@ -1,0 +1,28 @@
+<!--pages/report/history/reportHistory.wxml-->
+<view class="matterbox" style="height:{{historyList.length==0?'100%':'auto'}}">
+    <block wx:for="{{historyList}}" wx:key="id" wx:for-item="item" wx:for-index="index" class="mcontent-item">
+        <view class="itemlist" data-id="{{item.pid}}">
+            <view class="mcontent-item-time">
+                <text class="label-block">时间：</text> <text>{{item.signtime}}</text>
+            </view>
+            <view class="mcontent-item-title">
+               <text class="label-block">类型：</text> <text>{{item.typename}}</text>
+            </view>
+            <view class="mcontent-item-time">
+                <text class="label-block">位置：</text> <text>{{item.signaddress}}</text>
+            </view>
+<!--            按钮区，删除按钮与查看详情-->
+            <view class="mcontent-item-btn">
+                <button size="mini" class="btn btn-delete" bindtap="binddeleteClick" data-id="{{item.pid}}">删除</button>
+                <button size="mini"  class="btn btn-detail" bindtap="bindoverClick" data-id="{{item.pid}}">详情</button>
+            </view>
+<!--            <icon class="iconfont icon-jinrujiantouxiao"/>-->
+        </view>
+
+    </block>
+    <!--    如果获取到的historyList为空则展示数据为空的图片-->
+    <view wx:if="{{historyList.length==0}}" class="nodata">
+        <image src="../../image/nodata.png"/>
+        <text>暂无数据</text>
+    </view>
+</view>

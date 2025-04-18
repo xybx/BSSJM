@@ -1,0 +1,20 @@
+<!--pages/greet/greet.wxml-->
+<scroll-view class="scrollbox" style="height:{{winHeight}}px" enable-flex scroll-y type="list">
+  <view class="greetbox" bindtap="navClick">
+    <image src="../../image/bg.png" mode="scaleToFill"/>
+  </view>
+  <view class="timebox">
+    {{timer}}s
+  </view>
+  <!-- <view class="imgbox">
+    <view class="fontbox">
+      <image src="../../image/font.png" mode="scaleToFill"/>
+    </view>
+    <view class="iconbox">
+      <image src="../../image/bgimg.png" mode="scaleToFill"/>
+    </view>
+    <view class="btnbox">
+      <image src="../../image/btn.png" mode="scaleToFill"/>
+    </view>
+  </view> -->
+</scroll-view>

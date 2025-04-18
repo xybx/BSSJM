@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<!--<import src="../../wxParse/wxParse.wxml" />-->
+<navigation-bar title="{{mTitle}}" back="{{true}}" color="white" background="#2381EC"></navigation-bar>
+<scroll-view class="scrollbox" style="height:{{winHeight - 44 - padtop}}px" enable-flex scroll-y type="list">
+  <view  class="mainbody">
+  <!-- 标题-->
+      <view class="title">{{guideInfo.guidname}}</view>
+  <!--时间 -->
+      <view class="time">{{guideInfo.creatdate}}</view>
+      <rich-text class="content" nodes="{{guideInfo.content}}"></rich-text>
+<!--      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>-->
+  </view>
+</scroll-view>
+

@@ -1,0 +1,27 @@
+/* pages/greet/greet.wxss */
+.greetbox{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.greetbox image{
+  width: 100%;
+  height: 100%;
+}
+.timebox{
+  position: absolute;
+  top:45px;
+  left: 20px;
+  border-radius: 50%;
+  width:68rpx;
+  height:68rpx;
+  background: rgba(255, 255, 255, .2);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border:4px solid rgba(255, 255, 255, .2);
+}

@@ -1,0 +1,46 @@
+.phoneage,.guideage{
+  width: 100%;
+  background: none!important;
+  padding: 0!important;
+  .el-card {
+    min-height: calc(100vh - 104px) !important;
+    margin-bottom: 0;
+    ::v-deep{
+      .el-card__header{
+        background-color:#F5F7FA;
+        color: #333;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        flex-direction: row;
+        padding: 12px 20px;
+        span{
+          margin-left: 10px;
+          line-height: 20px;
+          display: inline-block;
+        }
+        i{
+          width: 3px;
+          height:20px;
+          background-color:#0C9ED7;
+          display: inline-block;
+          position: relative;
+          top: 4px;
+        }
+      }
+      .el-card__body{
+        .addbtn{
+          margin-bottom: 20px;
+        }
+        .el-table{
+          .el-table__body{
+            .el-button{
+              padding:9px 20px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

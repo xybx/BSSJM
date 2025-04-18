@@ -1,0 +1,23 @@
+<!--pages/userHome/userHome.wxml-->
+<navigation-bar title="{{mTitle}}" back="{{false}}" backTo="{{lastPage}}" color="white" background="#2381EC"></navigation-bar>
+<scroll-view class="scrollbox" style="height:{{winHeight - 44 - padtop}}px" enable-flex scroll-y type="list">
+  <view class="userbox" bindtap="bindUserChange">
+    <icon class="iconfont icon-shiyourenkou"/>
+    <text>{{username}}</text> 
+  </view>
+  <view class="clear"></view>
+  <block wx:for="{{userData}}" wx:for-item="item" wx:for-index="i" wx:key="i">
+    <view class="itembox" id="{{i+1}}" bindtap="bindNavClick">
+      <image src="{{item.img}}" mode="scaleToFill"/>
+      <text>{{item.name}}</text>
+    </view>
+  </block>
+  <page-container show="{{showpage}}" round="true">
+    <view class="pagebody">
+      <view class="page public" bindtap="public">切换公众端</view>
+      <view class="page logout" bindtap="logout">退出登录</view>
+      <view class="page cancle" bindtap="cancle">取消</view>
+    </view>
+    
+  </page-container>    
+</scroll-view>

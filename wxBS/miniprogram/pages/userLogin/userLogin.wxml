@@ -1,0 +1,34 @@
+<!--pages/userLogin/userLogin.wxml-->
+<scroll-view class="scrollbox" style="height:{{winHeight}}px" enable-flex scroll-y type="list">
+  <view class="formbox">
+    <text class="titbox">用户登录</text>
+    <form bindsubmit="loginData">
+        <view class="formitem">
+            <icon class="iconfont icon-shoujihao" />
+            <input type="text" name="username" value="{{loginData.username}}" class="inputstyle {{!showphone ? 'pinput' : ''}}"  disabled placeholder="登记您的电话"/>
+            <button wx:if="{{!showphone}}" class="pbtn" size="mini" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">{{ phonename }}</button>
+        </view>
+        <!-- <view class="formitem">
+            <icon class="iconfont icon-weizhi" />
+            <picker name="areaname" value="{{loginData.areaname}}" range="{{areaData}}" range-key="name" id="areaname" class='picker' bindchange="bindareachange">
+                <view wx:if="{{loginData.areaname == null || loginData.areaname === ''}}" class="placeholder">请输入站点</view>
+                <view wx:else> {{areaData[loginData.areaname].name}}</view>      
+            </picker>
+            <input style="display: none;" name="areaid" type="text" value="{{loginData.areaid}}"/>
+        </view> -->
+        <view class="formitem">
+            <icon class="iconfont icon-mimasuo" />
+            <input type="text" password="true" name="password" value="{{loginData.password}}" class="inputstyle" placeholder="请输入密码"/>
+        </view>
+        <view class="btnbox">
+           <button class="goodbtn" form-type="submit">登 录</button>
+        </view> 
+        <view class="btnbox" wx:if="{{showbtn}}">
+           <view class="backbtn" bindtap="goback">返 回</view>
+        </view> 
+    </form>
+  </view>
+  <view class="bottombg">
+    <image src="../../image/loginbg.png" mode="scaleToFill"/>
+  </view>
+</scroll-view>

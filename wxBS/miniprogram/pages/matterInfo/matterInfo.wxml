@@ -1,0 +1,134 @@
+<!--pages/matterInfo/matterInfo.wxml-->
+<navigation-bar title="{{mTitle}}" back="{{true}}" backTo="{{lastPage}}" color="white" redirect="{{redirectback}}"
+                background="#2381EC"></navigation-bar>
+<scroll-view class="scrollbox" style="height:{{winHeight - bheight - padtop}}px" enable-flex scroll-y type="list">
+    <form>
+        <view class="formitem">
+            <label class="formlabel">诉求类别</label>
+            <view>{{inputData.cate}}</view>
+        </view>
+        <view wx:if="{{showview}}" class="formitem">
+            <label class="formlabel">姓名</label>
+            <input type="text" name="pname" value="{{inputData.pname}}" class="inputstyle" disabled placeholder=""/>
+        </view>
+        <view wx:if="{{showview}}" class="formitem">
+            <label class="formlabel">手机号</label>
+            <input type="text" name="pphone" value="{{inputData.pphone}}" class="inputstyle" disabled placeholder=""/>
+        </view>
+        <view class="formitem textbox">
+            <label class="formlabel">留言内容</label>
+            <textarea class="textstyle" name="repconten" disabled="true" maxlength="1000"
+                      value="{{inputData.repconten}}"/>
+        </view>
+        <view class="formitem textbox" wx:if="{{inputData.imageList.length > 0}}">
+            <label class="formlabel">图片</label>
+            <view class="imgboxShow">
+                <view class='pic imglist' wx:for="{{inputData.imageList}}" wx:for-item="item" wx:key="*this">
+                    <!--循环imageList展示图片,点击图片全屏查看-->
+                    <image class='photoimg' src="{{imgurl}}{{item}}{{globletoken}}" data-index="{{index}}"
+                           mode="scaleToFill" bindtap="previewImg">
+                    </image>
+                </view>
+            </view>
+        </view>
+        <view class="formitem textbox" wx:if="{{inputData.videoList.length > 0}}">
+            <label class="formlabel">视频</label>
+            <view class="imgboxShow">
+                <view class='pic imglist' wx:for="{{inputData.videoList}}" wx:for-item="item" wx:key="*this">
+                    <!--循环videoList,展示视频,点击全屏观看-->
+                    <video class='photoimg' src="{{videoUrl}}{{item}}{{globletoken}}" data-index="{{index}}"
+                           controls="controls" bindtap="previewVideo">
+                    </video>
+                </view>
+            </view>
+        </view>
+        <view class="formitem">
+            <label class="formlabel">所属部门</label>
+            <view>{{inputData.areaname}}</view>
+        </view>
+        <view class="formitem textbox">
+            <label class="formlabel">当前位置</label>
+            <view>{{inputData.address}}</view>
+        </view>
+        <view wx:if="{{inputData.admincontent!=='' && inputData.admincontent!==null}}" class="fontbox">回复信息</view>
+        <view wx:if="{{inputData.admincontent!=='' && inputData.admincontent!==null}}" class="formitem textbox">
+            <label class="formlabel">留言回复</label>
+            <textarea class="textstyle" name="repconten" disabled="true" maxlength="1000"
+                      value="{{inputData.admincontent}}"/>
+        </view>
+        <view wx:if="{{inputData.adminimage.length>0}}" class="formitem textbox">
+            <label class="formlabel">回复图片</label>
+            <view class="imgboxShow">
+                <view class='pic imglist' wx:for="{{inputData.adminimage}}" wx:for-item="item" wx:key="*this">
+                    <!--                    循环imageList展示图片,点击图片全屏查看-->
+                    <image class='photoimg' src="{{imgurl}}{{item}}{{globletoken}}" data-index="{{index}}"
+                           mode="scaleToFill" bindtap="previewImg1">
+                    </image>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{sameUser && inputData.appcontent!=='' && inputData.appcontent!==null}}" class="fontbox">审核信息</view>
+        <view wx:if="{{sameUser && inputData.appcontent!=='' && inputData.appcontent!==null}}" class="formitem textbox">
+            <label class="formlabel">审核信息</label>
+            <textarea class="textstyle" name="appcontent" disabled="true" maxlength="1000"
+                      value="{{inputData.appcontent}}"/>
+        </view>
+        <view wx:if="{{showbtn}}" class="btnarea">
+            <block wx:if="{{sitemanager == 1}}">
+                <button type="primary" class="goodbtn" bindtap="passClick">通过</button>
+                <button type="warn" class="goodbtn" bindtap="rejectClick">打回</button>
+            </block>
+<!--            这里办理的时候需要校验一下是否为当前办理人，是的话再展示-->
+            <block wx:elif="{{sameUser}}">
+                <button type="primary" class="goodbtn" bindtap="overClick">回复</button>
+                <button type="primary" class="goodbtn" bindtap="transferClick">转交</button>
+                <button type="warn" class="goodbtn" bindtap="nocareClick">忽略</button>
+            </block>
+        </view>
+    </form>
+    <page-container show="{{showpage}}" round="true">
+        <view class="headtitle">{{headtitle}}</view>
+        <view class="pagebody">
+            <block wx:if="{{!transferOrNot}}">
+                <text><text class="reds">*</text>{{labletitle}}</text>
+            </block>
+            <form bindsubmit="saveClick">
+                <block wx:if="{{transferOrNot}}">
+                    <!--                <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">-->
+                    <!--                    <view class="picker">-->
+                    <!--                        {{array[index]}}-->
+                    <!--                    </view>-->
+                    <!--                </picker>-->
+                    <view class="formitem">
+                        <label class="formlabel">诉求类别</label>
+                        <picker name="cateSelect" value="{{inputData.cateSelect}}" range="{{cateData}}" range-key="name" id="cateSelect"
+                                class='picker' bindchange="bindCateChange">
+                            <view wx:if="{{inputData.cateSelect == null || inputData.cateSelect === '' || !cateData[inputData.cateSelect].name}}"
+                                  class="placeholder">请选择诉求类别
+                            </view>
+                            <view wx:else>{{cateData[inputData.cateSelect].name}}</view>
+                        </picker>
+                    </view>
+                    <view class="formitem">
+                        <label class="formlabel">所属部门</label>
+                        <picker name="areanameSelect" value="{{inputData.areanameSelect}}" range="{{areaData}}" range-key="name"
+                                id="areanameSelect" class='picker' bindchange="bindAreaChange">
+                            <view wx:if="{{inputData.areanameSelect == null || inputData.areanameSelect === '' || !areaData[inputData.areanameSelect].name}}"
+                                  class="placeholder">请选择所属部门
+                            </view>
+                            <view wx:else>{{areaData[inputData.areanameSelect].name}}</view>
+                        </picker>
+                    </view>
+                </block>
+                <block wx:else>
+                    <textarea class="textstyle" name="opinion" placeholder="请输入意见内容" maxlength="1000"
+                              value="{{opinion}}"/>
+                </block>
+                <view class="btnbox">
+                    <button class="blues" form-type="submit">确定</button>
+                    <button type="default" class="cancle" bindtap="cancleClick">取消</button>
+                </view>
+            </form>
+        </view>
+    </page-container>
+</scroll-view>

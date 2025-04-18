@@ -1,0 +1,21 @@
+/*@import "/wxParse/wxParse.wxss";*/
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.time{
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.mainbody{
+  padding: 2vmax;
+}

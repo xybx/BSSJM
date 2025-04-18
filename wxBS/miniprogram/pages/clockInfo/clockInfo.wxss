@@ -1,0 +1,184 @@
+/* pages/clockIn/clockIn.wxss */
+.swipertab{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 0px 5px 1px rgba(0,0,0,.1);
+    height:48px;
+    z-index: 10;
+}
+.swipertab .tabitem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 24rpx 0;
+    cursor: pointer;
+    position: relative;
+    color: #999;
+}
+.active{
+    color: #2381EC!important;
+}
+.swipertab .tabitem.active::before{
+    content: '';
+    display: block;
+    width: 50%;
+    height: 5rpx;
+    position: absolute;
+    bottom: 0;
+    background-color:#2381EC;
+}
+
+.swiperbody{
+    display: flex!important;
+    height: 100%!important;
+    background-color: #fff;
+}
+.swipercont{
+    width: 100%;
+    height: 100%;
+}
+.swipercont form{
+    display: block;
+}
+.formitem{
+    overflow: hidden;
+    height:30px;
+    padding:20rpx 24rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1rpx solid rgba(0,0,0,.05);
+}
+.formlabel{
+    width:24%;
+    font-size:16px;
+    height: 100%;
+    line-height: 30px;
+}
+.picker{
+    width:75%;
+    height:100%;
+    line-height: 30px;
+    text-align: right;
+}
+.inputstyle{
+    width:75%;
+    height:100%;
+    line-height: 30px;
+    text-align: right;
+}
+.placeholder{
+    text-align: right;
+    color: #888;
+}
+.textbox{
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    align-items: baseline;
+}
+.textstyle{
+    width: 100%;
+    height:200rpx;
+    padding-top:5px;
+}
+.textbox .formlabel{
+    width: 100%;
+}
+
+.fontbox{
+    padding:20rpx 24rpx 10rpx;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+.map {
+    width: 100%;
+    height:260px;
+}
+.pinput{
+    width:48%;
+    margin-right: 1%;
+}
+.pbtn{
+    width:26%;
+    padding: 0 10px!important;
+    border-radius: 10rpx;
+    background-color:rgba(57, 149, 204, 1);
+    color: #fff;
+    font-size: 16px;
+    margin: 0;
+}
+.imgbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border:2rpx solid #ccc;
+    border-radius:5px;
+    width: 200rpx;
+    height: 200rpx;
+}
+.uploadbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 20rpx;
+}
+.imgbox icon{
+    font-size:42px;
+    color: #ccc;
+}
+.photoimg{
+    width: 200rpx;
+    height: 200rpx;
+    position: relative;
+    margin:0 20rpx 0 0;
+}
+.delete-btn{
+    position: absolute;
+    z-index: 2;
+    right: 0px;
+    top: 0px;
+}
+.btnarea{
+    width: calc(100% - 20px);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 1px 0 3px 1px rgba(0,0,0,.1);
+    padding:10px;
+}
+.goodbtn{
+    background-color: rgba(57, 149, 204, 1);
+    color: #fff;
+    font-size: 16px;
+}
+
+.areabox{
+    width: 100%;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom:10px;
+}
+.areabox .formlabel{
+    width:22%;
+}
+.areabox .inputstyle{
+    width:100%;
+    text-align: left;
+}
+
+
+

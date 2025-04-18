@@ -1,0 +1,112 @@
+<navigation-bar title="{{mTitle}}" back="{{true}}" backTo="{{lastPage}}" color="white" background="#2381EC"></navigation-bar>
+<view class="swipertab">
+  <view class="tabitem {{currentTab==item.pid ?'active':''}}" data-id="{{item.pid}}" bindtap="bindclickTab" wx:for="{{tabData}}" wx:key="i">{{item.name}}</view>
+</view>
+  <swiper current="{{currentTab}}" class="swiperbody" duration="300" bindchange="swiperTab">
+    <swiper-item>
+      <scroll-view class="scrollbox" style="height:{{winHeight - 153 - padtop}}px" enable-flex scroll-y type="list">
+        <view class='swipercont'>
+          <form bindsubmit="saveData">
+            <view class="formitem">
+              <label class="formlabel">诉求类别</label>
+<!--              <picker name="cate" value="{{inputData.cate}}" range="{{cateData}}" range-key="name" id="cate" class='picker' bindchange="bindcatechange">-->
+<!--                <view wx:if="{{inputData.cate == null || inputData.cate === ''}}" class="placeholder">请选择诉求类别</view>-->
+<!--                <view wx:else> {{cateData[inputData.cate].name}}</view>      -->
+<!--              </picker>-->
+<!--              <input type="text" id="cate" disabled="true" name="cate" readonly="true"  value="{{inputData.cate}}" class="picker"  placeholder="请选择诉求类别" bindtap="cateClick"/>-->
+              <textarea class="picker" id="cate" disabled="true" auto-height value="{{inputData.cate}}"  placeholder="请选择诉求类别" bindtap="cateClick"/>
+              <input style="display: none;" name="typeid" type="text" value="{{inputData.typeid}}"/>
+            </view>
+            <!-- <view class="formitem">
+              <label class="formlabel">上诉人情况</label>
+              <picker name="uptype" value="{{inputData.uptype}}" range="{{ndata}}" disabled id="uptype" class='picker'>
+                  <view wx:if="{{inputData.uptype == null || inputData.uptype === ''}}" class="placeholder">请选择上诉人情况</view>
+                  <view wx:else> {{ndata[inputData.uptype]}}</view>      
+              </picker>
+            </view> -->
+            <view wx:if="{{showview}}" class="formitem">
+              <label class="formlabel">姓名</label>
+              <input type="text" name="pname" value="{{inputData.pname}}" class="inputstyle" placeholder="请输入姓名" />
+            </view>
+            <view wx:if="{{showview}}" class="formitem">
+              <label class="formlabel">手机号</label>
+              <input type="text" name="pphone" value="{{inputData.pphone}}" class="inputstyle {{!showphone ? 'pinput' : ''}}" disabled  placeholder="登记您的电话" />
+              <button wx:if="{{!showphone}}" class="pbtn" size="mini" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">{{phonename}}</button>
+            </view>
+            <view class="formitem textbox">
+              <label class="formlabel">留言内容</label>
+              <textarea class="textstyle" name="repconten" placeholder="请输入留言内容" maxlength="1000" value="{{inputData.repconten}}"/>
+            </view>
+            <view class="formitem textbox">
+              <label class="formlabel">上传图片</label>
+              <view class="uploadbox">
+                <view class='pic imglist' wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+                    <image class='photoimg' src="{{imgurl}}{{item}}" data-index="{{index}}" mode="scaleToFill" bindtap="previewImg">
+                        <icon type='clear' color="red" class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></icon>
+                    </image>
+                </view>
+                <view wx:if="{{imgshow}}" class="imgbox pic" bindtap="chooseImg">
+                  <icon class="iconfont icon-jiahao1" />
+                </view>
+              </view>
+            </view>
+            <view class="formitem textbox">
+              <label class="formlabel">上传视频</label>
+              <view class="uploadbox">
+                <view class='pic imglist' wx:for="{{videos}}" wx:for-item="item" wx:key="*this">
+                    <video class='photoimg' src="{{videourl}}{{item}}" data-index="{{index}}" controls="controls"  bindtap="previewVideo">
+                        <icon type='clear' color="red" class="delete-btn" data-index="{{index}}" catchtap="deleteVideo"></icon>
+                    </video>
+                </view>
+                <view wx:if="{{videoshow}}" class="imgbox pic" bindtap="chooseVideo"><icon class="iconfont icon-shipinbofang" /></view>
+              </view>
+            </view>
+            <view class="fontbox">事项位置</view>
+            <!-- <view class="formitem" wx:if="{{none}}">
+              <label class="formlabel">测试用经度</label>
+              <input type="text" name="longitude1" value="{{longitude1}}" class="inputstyle" placeholder="请输入测试用经度" />
+            </view>
+            <view class="formitem" wx:if="{{none}}">
+              <label class="formlabel">测试用纬度</label>
+              <input type="text" name="latitude1" value="{{latitude1}}" class="inputstyle" placeholder="请输入测试用纬度" />
+            </view> -->
+            <view class="formitem">
+              <label class="formlabel">所属部门</label>
+              <picker name="areaname" value="{{inputData.areaname}}" range="{{areaData}}" range-key="name" id="areaname" class='picker' bindchange="bindareachange">
+                <view wx:if="{{inputData.areaname == null || inputData.areaname === '' || !areaData[inputData.areaname].name}}" class="placeholder">请选择所属部门</view>
+                <view wx:else> {{areaData[inputData.areaname].name}}</view>      
+              </picker>
+              <input style="display: none;" name="areaid" type="text" value="{{inputData.areaid}}"/>
+            </view>
+            <view class="formitem textbox">
+              <view class="areabox">
+                <label class="formlabel">当前位置</label>
+                <input type="text" name="address" value="{{inputData.address}}" class="inputstyle" disabled  placeholder="当前位置" />
+              </view>
+              <!-- <map id="mapId" class="map" latitude="{{inputData.latitude}}" longitude="{{inputData.longitude}}"></map>-->
+            </view>
+            <view class="btnarea">
+             <button class="goodbtn" form-type="submit">提交</button>
+           </view>  
+          </form>
+        </view>
+      </scroll-view>
+    </swiper-item> 
+    <swiper-item>
+        <scroll-view class='scrollbox swipercont' style="height:{{winHeight - 92 - padtop}}px" enable-flex scroll-y bindscrolltolower="bindscrolltolower">
+          <reportHistory id="child"></reportHistory>
+        </scroll-view> 
+    </swiper-item>
+    <page-container show="{{showPage}}" round="true">
+      <view class="pagebody">
+<!--        循环展示cateData内容，绑定点击事件传入id-->
+        <block wx:for="{{cateData}}" wx:for-item="item" wx:for-index="i" wx:key="i">
+                <view class="page {{isActivity===item.pid? 'activity' : ''}}" data-uptype='{{item.uptype}}' data-index='{{item.pid}}' data-name="{{item.name}}" bindtap="bindcatechange">{{item.name}}</view>
+        </block>
+<!--        <view class="page public" bindtap="public">切换公众端</view>-->
+<!--        <view class="page logout" bindtap="logout">退出登录</view>-->
+<!--        <view class="page cancle" bindtap="cancle">取消</view>-->
+      </view>
+    </page-container>
+  </swiper>
+

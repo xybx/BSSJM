@@ -1,0 +1,71 @@
+<!--pages/clockIn/clockIn.wxml-->
+<navigation-bar title="{{mTitle}}" back="{{true}}" backTo="{{lastPage}}" color="white" background="#2381EC"></navigation-bar>
+<view class="swipertab">
+  <view class="tabitem {{currentTab==item.pid ?'active':''}}" data-id="{{item.pid}}" bindtap="bindclickTab" wx:for="{{tabData}}" wx:key="i">{{item.name}}</view>
+</view>
+  <swiper current="{{currentTab}}" class="swiperbody" duration="300" bindchange="swiperTab">
+    <swiper-item>
+      <scroll-view class="scrollbox" style="height:{{winHeight - 153 - padtop}}px" enable-flex scroll-y type="list">
+        <view class='swipercont'>
+          <form bindsubmit="saveData">
+            <view class="formitem">
+              <label class="formlabel">打卡类别</label>
+              <picker name="cate" value="{{inputData.cate}}" range="{{cateData}}" range-key="name" id="cate" class='picker' bindchange="bindcatechange">
+                <view wx:if="{{inputData.cate == null || inputData.cate === ''}}" class="placeholder">请选择打卡类别</view>
+                <view wx:else> {{cateData[inputData.cate].name}}</view>      
+              </picker>
+              <input style="display: none;" name="typeid" type="text" value="{{inputData.typeid}}"/>
+            </view>
+            <view class="formitem">
+              <label class="formlabel">单位</label>
+              <view class="inputstyle">{{inputData.poffice}}</view>
+            </view>
+            <view class="formitem">
+              <label class="formlabel">姓名</label>
+              <view class="inputstyle">{{inputData.pname}}</view>
+            </view>
+            <view class="formitem">
+              <label class="formlabel">手机号</label>
+              <view class="inputstyle">{{inputData.phone}}</view>
+            </view>
+            <view class="formitem">
+              <label class="formlabel">时间</label>
+              <view class="inputstyle" bindtap="updateTime">{{inputData.ptime}}</view>
+            </view>
+            <view class="formitem textbox">
+              <label class="formlabel">打卡内容描述</label>
+              <textarea class="textstyle" name="content" placeholder="请输入打卡内容描述" maxlength="1000" value="{{inputData.content}}"/>
+            </view>
+            <view class="formitem textbox">
+              <label class="formlabel">上传图片</label>
+              <view class="uploadbox">
+                <view class='pic imglist' wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+                    <image class='photoimg' src="{{imgurl}}{{item}}" data-index="{{index}}" mode="scaleToFill" bindtap="previewImg">
+                        <icon type='clear' color="red" class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></icon>
+                    </image>
+                </view>
+                <view wx:if="{{imgshow}}" class="imgbox pic" bindtap="chooseImg">
+                  <icon class="iconfont icon-jiahao1" />
+                </view>
+              </view>
+            </view>
+            <view class="formitem textbox">
+              <view class="areabox">
+                <label class="formlabel">定位信息</label>
+                <input type="text" name="signaddress" value="{{inputData.signaddress}}" class="inputstyle" disabled  placeholder="当前位置" />
+              </view>
+              <map id="mapId" class="map" markers="{{tMarkers}}" bindtap="PointClick" latitude="{{inputData.latitude}}" longitude="{{inputData.longitude}}" show-location="true" scale="{{scale}}"></map>
+            </view>
+            <view class="btnarea">
+             <button class="goodbtn" form-type="submit">提交</button>
+           </view>  
+          </form>
+        </view>
+      </scroll-view>
+    </swiper-item> 
+    <swiper-item>
+        <scroll-view class='scrollbox swipercont' style="height:{{winHeight - 92 - padtop}}px" enable-flex scroll-y bindscrolltolower="bindscrolltolower">
+           <clockHistory id="child"></clockHistory>
+        </scroll-view> 
+    </swiper-item>
+  </swiper>

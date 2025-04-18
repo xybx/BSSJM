@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<navigation-bar title="{{mTitle}}" back="{{false}}" color="white" background="#2381EC"></navigation-bar>
+<scroll-view class="scrollbox" style="height:{{winHeight - 44 - padtop}}px" enable-flex scroll-y type="list">
+  <view class="matterbox">
+    <block wx:for="{{listData}}" wx:for-item="item" wx:key="i">
+      <view class="mheader">
+        <text>{{item.title}}</text>  
+        <!-- <view wx:if="{{item.pid == 1}}" class="userbtn" bindtap="bindUserClick">
+          <icon class="iconfont icon-jiantou_zuoyouqiehuan"/>
+          <text>切换工作端</text>
+        </view> -->
+      </view>
+      <view wx:if="{{item.pid != 3}}" class="mbody">
+        <view wx:if="{{item.pid == 1}}" class="mbanner" bindtap="bindFillClick">
+          <image src="{{item.children[0].images}}" mode="aspectFit"/>
+          <button size="mini">我要留言</button>
+        </view>
+        <view wx:if="{{item.pid == 2}}" class="mitembox">
+          <block wx:for="{{item.children}}" wx:for-item="val" wx:key="j">  
+            <view class="mitem" bindtap="bindPhoneClick" data-phone="{{val.phone}}">
+              <view class="mhead">
+                <image src="../../image/icon.png" mode="aspectFit"/>
+                <text>{{val.name}}</text>
+              </view>  
+              <view class="mfoot">
+                   <text>{{val.phone}}</text>
+                   <button size="mini">一键拨号</button> 
+              </view>
+            </view> 
+          </block>    
+        </view>
+      </view>
+      <view wx:else class="scrollarea">
+        <block wx:for="{{item.children}}" wx:for-item="v" wx:key="n">
+          <view class="itemlist" bindtap="bindoverClick" data-id="{{v.pid}}">
+              <text>{{v.name}}</text>
+              <icon class="iconfont icon-jinrujiantouxiao"/>
+          </view>
+        </block>   
+      </view>
+    </block>
+    <view wx:if="{{showfoot}}" class="footicon" bindtap="bindUserClick">
+      <text>技术支持</text>
+    </view>
+  </view>
+</scroll-view>
