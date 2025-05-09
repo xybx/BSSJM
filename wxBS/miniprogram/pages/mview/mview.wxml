@@ -1,0 +1,30 @@
+<!--pages/mview/mview.wxml-->
+<navigation-bar ext-class="viewnav" title="{{mTitle}}" back="{{true}}" color="black" background="rgba(233, 242, 255, 1)"></navigation-bar>
+<scroll-view class="scrollbox" style="height:{{winHeight - 44 - padtop}}px" enable-flex scroll-y type="list">
+  <image class="viewimg" src="{{viewimg}}" />
+  <view class="wrapbox"> 
+    <view class="viewbox">
+      <view class="viewfont">
+        <image class="vfont" src="../../image/viewfont.png" ></image>
+        <text class="vtext">畅享更多便民服务！</text>
+        <image class="viewlogo" src="../../image/viewlogo.png"></image>
+      </view>
+      <image src="../../image/viewimg.png" />
+    </view>
+    <view class="viewbody">
+      <block wx:for="{{listData}}" wx:for-item="item" wx:key="i">   
+        <view class="mbody">
+          <view class="mheader">
+            <text>{{item.title}}</text>  
+          </view>
+          <text>{{item.content}}</text>
+          <view class="imgbox" wx:if="{{item.pid == 1}}">
+            <image src="{{item.images}}" show-menu-by-longpress mode="aspectFit"/>
+            <text>（扫码下载爱山东APP）</text>
+          </view>
+          <button wx:if="{{item.pid == 2}}" size="mini" bind:tap="copyLink">复制链接</button>
+        </view>
+      </block>
+    </view>  
+  </view>
+</scroll-view>

@@ -13,7 +13,8 @@
     "pages/userHome/userHome",
     "pages/userLogin/userLogin",
     "pages/jump/jump",
-    "pages/matterdirect/matterdirect"
+    "pages/matterdirect/matterdirect",
+    "pages/mview/mview"
   ],
   "requiredPrivateInfos": [
     "getLocation"

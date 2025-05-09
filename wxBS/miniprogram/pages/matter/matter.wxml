@@ -10,12 +10,16 @@
           <text>切换工作端</text>
         </view> -->
       </view>
-      <view wx:if="{{item.pid != 3}}" class="mbody">
+      <view wx:if="{{item.pid != 4}}" class="mbody">
         <view wx:if="{{item.pid == 1}}" class="mbanner" bindtap="bindFillClick">
           <image src="{{item.children[0].images}}" mode="aspectFit"/>
           <button size="mini">我要留言</button>
         </view>
-        <view wx:if="{{item.pid == 2}}" class="mitembox">
+        <view wx:if="{{item.pid == 2}}" class="mbanner {{index == 1 ? 'mban' : ''}}" bindtap="bindWebviewClick">
+          <image src="{{item.children[0].images}}" mode="aspectFit"/>
+          <button size="mini">进入</button>
+        </view>
+        <view wx:if="{{item.pid == 3}}" class="mitembox">
           <block wx:for="{{item.children}}" wx:for-item="val" wx:key="j">  
             <view class="mitem" bindtap="bindPhoneClick" data-phone="{{val.phone}}">
               <view class="mhead">
@@ -42,5 +46,6 @@
     <view wx:if="{{showfoot}}" class="footicon" bindtap="bindUserClick">
       <text>技术支持</text>
     </view>
+    <!-- <web-view src="https://jwb.dpinfo.com.cn:9100/asdapp/jmportal/asd2wm/down/downandroid.html"></web-view> -->
   </view>
 </scroll-view>

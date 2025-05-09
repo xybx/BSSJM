@@ -21,8 +21,11 @@ page {
 .weui-navigation-bar__center{
   font-size:16px!important;
 }
-.weui-navigation-bar__btn_goback{
-  background-color: #fff!important;
+.weui-navigation-bar__left .weui-navigation-bar__btn_goback{
+  background-color: #fff;
+}
+.viewnav .weui-navigation-bar__left .weui-navigation-bar__btn_goback{
+  background-color: #000;
 }
 .scrollbox{
   height: 100%;

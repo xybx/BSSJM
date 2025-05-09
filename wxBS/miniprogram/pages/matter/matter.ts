@@ -70,13 +70,16 @@ Component({
         {pid:1,title:'我要留言',children:[
           {images:'../../image/mimg.png'}
         ]},
-        {pid:2,title:'值班电话',children:res1.data.length > 0 ? res1.data.map((item:any)=>{
+        {pid:2,title:'公安业务码上办',children:[
+          {images:'../../image/mview.png'}
+        ]},
+        {pid:3,title:'值班电话',children:res1.data.length > 0 ? res1.data.map((item:any)=>{
           return {
             name:item.desname,
             phone:item.phone
           }
         }):[]},
-        // {pid:3,title:'办事指南',children:res2.data.length > 0 ? res2.data.map((item:any)=>{
+        // {pid:4,title:'办事指南',children:res2.data.length > 0 ? res2.data.map((item:any)=>{
         //   return {
         //     pid:item.pid,
         //     name:item.guidname
@@ -144,6 +147,11 @@ Component({
     bindFillClick(){
       wx.navigateTo({
         url: '../madd/madd',
+      })
+    },
+    bindWebviewClick(){
+      wx.navigateTo({
+        url: '../mview/mview',
       })
     },
     // 事件处理函数
